@@ -1,9 +1,9 @@
 # UniversityBias
 
-## A. Motivation
-I am interested in analyzing bias in various University Ranking Systems. As part of an independent study with professor Jevin West at the University of Washington, I am using various statistical analysis techniques to identify if and how University Ranking Systems are biased. I am using Javascript/D3 to visualize the results.
+## Motivation
+I was interested in analyzing bias in various University Ranking Systems. As part of an independent study with professor Jevin West at the University of Washington, I used various statistical analysis techniques to identify if and how University Ranking Systems are biased. I used Javascript/D3 to visualize the results.
 
-## B. Data Used
+## Data Used
 For my analysis, I used multiple datasets and spent a significant amount of time cleaning the data, collating the different parts and performing statistical analysis. Since I had compiled some of this data for Assignment 2 as well, there is some continuation. The datasets I used are –
 
 * World University Ranking dataset: I obtained this dataset from Kaggle. The data gives the university rankings compiled by 3 different institutions – Times Higher Educations (UK), Shanghai Rankings (China), Center for World University Ranking (Saudi Arabia).
@@ -13,7 +13,7 @@ For my analysis, I used multiple datasets and spent a significant amount of time
 * University information : I compiled this information from the National Centre for Education Statistics. The features obtained from this dataset include tuition and fees, undergraduate count, total headcount, location, region, master’s student count, count of faculty, faculty salary etc.
 I filtered the data for a single year - 2014 and only considered the top 150 Universities. Based on future results, I plan on scaling the analysis.
 
-## C. Description of visualizations
+## Description of visualizations
 * C.1 Scatter Plot (can be found under 'Explore Universities' tab): This visualization allows the user to explore the various dimensions related to an university. The main features are -
 Users can interactively select the x and y axis for the plot. Currently there are 11 options
 Users can visualize 4 dimensions by setting its value to size
