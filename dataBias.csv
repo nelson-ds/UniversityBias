@@ -1,0 +1,40 @@
+name,type,target,bias_type
+US News Ranking,Ranking System,N/A,N/A
+Times Ranking,Ranking System,N/A,N/A
+Shanghai Ranking,Ranking System,N/A,N/A
+CWUR Ranking,Ranking System,N/A,N/A
+University of California,University,0#1,Towards#Against
+Rockefeller University,University,0#1,Towards#Against
+Humboldt University of Berlin,University,0#1#2#3,Towards#Towards#Towards#Against
+Free University of Berlin,University,0#1#2#3,Towards#Towards#Towards#Against
+Erasmus University Rotterdam,University,0#1#2#3,Towards#Towards#Towards#Against
+London School of Hygiene & Tropical Medicine,University,0#1,Towards#Against
+Mayo Medical School,University,0#1#2,Towards#Against#Against
+Weizmann Institute of Science,University,0#1#2,Towards#Against#Against
+Chinese University of Hong Kong,University,0#3,Towards#Against
+Hong Kong University of Science and Technology,University,1#2,Towards#Against
+Wageningen University and Research Centre,University,1#2,Towards#Against
+University of Hamburg,University,0#1#2#3,Towards#Against#Towards#Towards
+Sapienza University of Rome,University,0#1#3,Towards#Towards#Against
+London School of Economics and Political Science,University,1#2,Towards#Against
+Delft University of Technology,University,1#2,Towards#Against
+Durham University,University,1#2,Towards#Against
+Maastricht University,University,1#2,Towards#Against
+University of York,University,1#2,Towards#Against
+Royal Holloway University of London,University,0#1#2#3,Against#Towards#Against#Against
+Eindhoven University of Technology,University,1#2,Towards#Against
+University of St Andrews,University,1#2,Towards#Against
+Boston College,University,1#2,Towards#Against
+Lancaster University,University,1#2,Towards#Against
+Colorado School of Mines,University,0#1#2,Against#Towards#Towards
+University of Warwick,University,1#2,Towards#Against
+University of Exeter,University,1#2,Towards#Against
+Keio University,University,0#1#2,Against#Against#Towards
+Waseda University,University,0#1#2#3,Towards#Against#Towards#Against
+University of Texas Southwestern Medical Center,University,0#1#2#3,Towards#Against#Towards#Towards
+University of Texas MD Anderson Cancer Center,University,0#1#2#3,Against#Against#Towards#Towards
+Baylor College of Medicine,University,0#1#2#3,Towards#Against#Towards#Towards
+University of Colorado at Denver,University,0#1#2,Towards#Against#Towards
+Osaka City University,University,0#1#2,Against#Against#Towards
+Aix Marseille University,University,0#1#2#3,Towards#Against#Towards#Towards
+University of Massachusetts Medical School,University,0#1#2#3,Against#Against#Towards#Towards

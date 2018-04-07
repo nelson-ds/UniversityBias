@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>University Rankings - Exploratory Analysis</title>
+	<!-- <link rel="stylesheet" href="_/base.css"> -->
+	<script src="_/d3.min.js"></script>
+	<script type="text/javascript" src="scriptUniv.js"></script>
+	<script type="text/javascript" src="scriptBias.js"></script>
+</head>
+
+<body bgcolor="#FDF6E3">
+	<div id="tabMenu">
+		<div class="tabStyle">
+			<style>
+				body {
+					font-family: "Exo 2", "Helvetica Neue", Helvetica, sans-serif;
+					font-weight: 300;
+					font-size: 1.2em;
+					line-height: 1.2em;
+					background: #FDF6E3;
+					color: #475B62;
+				}
+
+				strong {
+					font-weight: 600;
+				}
+
+				h1, h2, h3, h4, h5, h6 {
+					font-family: 'Roboto Slab', "Helvetica Neue", Helvetica, sans-serif;
+					font-weight: 700;
+					color: #CB4B19;
+					margin-bottom: .4em;
+				}
+
+				p {
+					margin-bottom: .5em;
+				}
+
+				.container {
+					width: 80%;
+					max-width: 1200px;
+					margin: 0 auto;
+					margin-top:10px;
+				}
+
+				@media all and (max-width: 500px) {
+					h2 {
+						padding-left: 10px;
+						text-align: center;
+					}
+					.container {
+						width: 100%;
+					}
+				}
+
+				#graphic {
+					margin: 0 auto;
+				}
+
+
+				/* Style the tab */
+				div.tab {
+					overflow: hidden;
+					border: 1px solid #ccc;
+					background-color: #f1f1f1;
+				}
+
+				/* Style the links inside the tab */
+				div.tab a {
+					float: left;
+					display: block;
+					color: black;
+					text-align: center;
+					padding: 14px 16px;
+					text-decoration: none;
+					transition: 0.3s;
+					font-size: 17px;
+				}
+
+				/* Change background color of links on hover */
+				div.tab a:hover {
+					background-color: #ddd;
+				}
+
+				/* Create an active/current tablink class */
+				div.tab a:focus, .active {
+					background-color: #ccc;
+				}
+
+ 				/* Style the tab content */
+				.tabcontent {
+					display: none;
+					padding: 6px 12px;
+					border: 1px solid #ccc;
+					border-top: none;
+				}
+
+				.tabcontent {
+					-webkit-animation: fadeEffect 1s;
+					animation: fadeEffect 1s; /* Fading effect takes 1 second */
+				}
+
+				@-webkit-keyframes fadeEffect {
+					from {opacity: 0;}
+					to {opacity: 1;}
+				}
+
+				@keyframes fadeEffect {
+					from {opacity: 0;}
+					to {opacity: 1;}
+				}
+			</style>
+		</div>
+
+		<div class="tab">
+			<a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'home')"  id="defaultOpen">Home</a>
+			<a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'project')"  id="defaultOpen">Analysis Method</a>
+			<a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'universities'); exploreUniv()">Explore Universities</a>
+			<a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'bias'); exploreBias()">Explore Bias</a>
+			<a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'about')">About</a>
+		</div>
+
+		<div id="home" class="tabcontent">
+
+			<h2 align="center">Bias analysis in university ranking systems</h2>
+
+			<h4>A. Motivation</h4>
+				<p>I am interested in analyzing bias in various University Ranking Systems. As part of an independent study with professor Jevin West at the University of Washington, I am using various statistical analysis techniques to identify if and how University Ranking Systems are biased. I am using Javascript/D3 to visualize the results.</p>
+			<h4>B. Data Used</h4>
+				<p>For my analysis, I used multiple datasets and spent a significant amount of time cleaning the data, collating the different parts and performing statistical analysis. Since I had compiled some of this data for Assignment 2 as well, there is some continuation. The datasets I used are –</p>
+			<ol>
+				<li><a target="_blank" href="https://www.kaggle.com/mylesoneill/world-university-rankings">World University Ranking dataset</a>: I obtained this dataset from Kaggle. The data gives the university rankings compiled by 3 different institutions – Times Higher Educations (UK), Shanghai Rankings (China), Center for World University Ranking (Saudi Arabia).</li>
+				<br>
+				<li><a target="_blank" href="https://www.washingtonpost.com/apps/g/page/local/us-news-college-ranking-trends-2014/1292/">US News University Ranking data</a> : I obtained this data from Washington Post portal and it gives the university rankings published by US News (USA)</li>
+				<br>
+				<li><a target="_blank" href="https://nces.ed.gov/ipeds/Home/UseTheData">University information</a> : I compiled this information from the National Centre for Education Statistics. The features obtained from this dataset include tuition and fees, undergraduate count, total headcount, location, region, master’s student count, count of faculty, faculty salary etc.
+				</li>
+			</ol>
+			<p>I filtered the data for a single year - 2014 and only considered the top 150 Universities. Based on future results, I plan on scaling the analysis.</p>
+			<h4>C. Description of visualizations</h4>
+			<b>  C.1 Scatter Plot (can be found under 'Explore Universities' tab):</b> This visualization allows the user to explore the various dimensions related to an university. The main features are -
+			<ol>
+				<li>Users can interactively select the x and y axis for the plot. Currently there are 11 options</li>
+				<li>Users can visualize 4 dimensions by setting its value to size</li>
+				<li>Users can additionally filter the data points based on regions (which has also been represented in the data via color)</li>
+				<li>Users can explore the university names by hovering mouse pointer over the circles in the scatter plot</li>
+			</ol>
+			<b>  C.2 Force directed Plot (can be found under 'Explore Bias' tab):</b> This is an interactive force directed graph layout with charge and gravity. Complicated multidimensional network information can be visualized using this. The main features are -
+			<ol>
+				<li>Blue circles represent the different ranking systems and grey circles represent the universities</li>
+				<li>A red color tie indicates that the ranking system biases AGAINST that university whereas a green color tie indicates that the ranking system biases TOWARDS that university.</li>
+				<li>Ties can only be formed between ranking systems and universities</li>
+				<li>Users can interactively drag each of the nodes to explore the network element and since the node has charge and gravity, it will attract or repel other nodes based on its ties</li>
+				<li>Users can interactively drag each of the nodes to explore the network element. Since the node has charge and gravity, it will attract or repel other nodes based on its ties so it is immediately visible how many ranking systems bias towards or against universities</li>
+				<li>Nodes with more ties tend ot gravitate towards the core of the network whereas the ones with fewer ties are at the peripheri</li>
+				<li>The feature of node clicking interactivity allows user to access information on-demand and not be overwhelmed by the information present in the plot</li> 
+			</ol>
+
+		</div>
+
+		<div id="project" class="tabcontent">
+			<h2 align="center">Analysis Method</h2>
+			<br>
+			<h4>Approach</h4>
+			<p>The complete analysis was done in iPython Notebook and you can view it on <a target="_blank" href="https://github.com/univrankinganalysis/BiasAnalysis/blob/master/BiasAnalysis.ipynb"> Github</a> or <a target="_blank" href="https://www.kaggle.com/nelsonds/university-ranking-bias-analysis-based-on-country?scriptVersionId=1055491">Kaggle</a>. I took the following approach while conducting the analysis</p>
+			<br>
+			<ol>
+				<li>Perform exploratory analysis of data to see how the universities are distributed based on rankings. Apart from the histogram below, <u><b>you can go to Explore Universities tab on this website to explore the data for yourself!</u></b> Please note that the rankkng considered for the analysis is US News ranking.</li>
+				<br>
+				<img align="middle" src="img/plot_all_hist.jpg" alt="Histograms of rankings" style="width:720px;height:720;">
+				<br>
+				<br>
+				<li>Assign each university a cluster class based on the pair-wise difference it exhibits. The clustering is done by knn and also by eyeballing the data to compare the results</li>
+				<br>
+				<img src="img/plot_clusters_bar.jpg" alt="Bar plot of pair-wise comparison for logical and knn clusters" style="width:720px;height:720;">0
+				<br>
+				<br>
+				<li>Based on the clustering, assign an impartiality score to each university based on the pair-wise bias. The impartiality score helps us obtain bias in rankings based on countries</li>
+				<br>
+				<img src="img/plot_US News_bias.jpg" alt="Histograms of pair wise ranking comparison" style="width:720px;height:720;">
+				<br>
+				<br>
+				<img src="img/plot_Times_bias.jpg" alt="Histograms of pair wise ranking comparison" style="width:720px;height:720;">
+				<br>
+				<br>
+				<img src="img/plot_CWUR_bias.jpg" alt="Histograms of pair wise ranking comparison" style="width:720px;height:720;">
+				<br>
+				<br>
+				<img src="img/plot_Shanghai_bias.jpg" alt="Histograms of pair wise ranking comparison" style="width:720px;height:720;">
+				<br>
+				<br>
+
+				<li>Perform statistical analysis (by computing the metric - 'impartiality score') and identified the universities towards/against which ranking systems are biased and visualized the results. <b><u> The results for this analysis can be seen in the Explore Bias tab on this website!</u></b></li>
+				<br>
+				<li>Next, I combined the first 2 parts to check for the predominant or latent bias factors demonstrated by ranking systems. This did not yield satisfactory results.</li> 
+				<br>
+				<li> Finally, I applied various predictive algorithms to glean how predictive each feature is for bias.
+				<br>
+				<br>
+				<img src="img/plot_analysis_dt1.png" alt="Result of decision tree" style="width:720px;height:720;">
+				<br>
+				<br>
+			</ol>
+ 
+			<p> We observe that when checking for the bias predictors for the pair US News and Times, the biggest factor in US News biasing towards a University is if the white population is less than 58%. On the flip side, US News is likely to bias against a University if the number of doctoral degree candidates is less than 51. Since the sample size is small, these results are no wayconclusive but it is interesting to observe these efects. Future iterations of this project will consider more number of universities and ranking systems.</p>
+
+		</div>
+
+		<div class="tabClick">
+			<script>
+				function openTab(evt, eventName) {
+					var i, tabcontent, tablinks;
+					tabcontent = document.getElementsByClassName("tabcontent");
+					for (i = 0; i < tabcontent.length; i++) {
+						tabcontent[i].style.display = "none";
+					}
+					tablinks = document.getElementsByClassName("tablinks");
+					for (i = 0; i < tablinks.length; i++) {
+						tablinks[i].className = tablinks[i].className.replace(" active", "");
+					}
+					document.getElementById(eventName).style.display = "block";
+					evt.currentTarget.className += " active";
+				}
+				// Get the element with id="defaultOpen" and click on it
+				document.getElementById("defaultOpen").click();
+			</script>
+		</div>	
+	</div>
+
+	<div id="universities" class="tabcontent">
+
+		<div id="universitiesStyle">
+			<style>
+				/*set the axis line color, dot stroke, font size, and font position*/
+				body {
+					font: 15px sans-serif;
+				}
+				.name{
+					position: relative;
+					top: 90px;
+					text-align: left;
+					font-weight: bold;
+				}
+
+				.title {
+					position: relative;
+					text-align: left;
+					font-size: 25px;
+				}
+
+				.axis path,
+				.axis line {
+					fill: none;
+					stroke: #000;
+					shape-rendering: crispEdges;
+				}
+
+				.dot {
+					stroke: #000;
+				}
+
+				#filter {
+					position: absolute;
+				}
+
+				#mark {
+					padding-left: 150px;
+					position: inherit;
+				}
+
+				#xAXs {
+					position: relative;
+					bottom: 90px;
+					left: 340px;
+				}
+
+				#yAXs {
+					position: relative;
+					bottom: 90px;
+					left: 360px;
+				}
+
+				#label {
+					position: absolute;
+					top: 570px;
+					bottom: 175px;
+					left: 360px;
+					right: 0px;
+				}
+
+				#label2 {
+					position: absolute;
+					top: 570px;
+					bottom: 175px;
+					left: 560px;
+					right: 0px;
+				}
+			</style>
+		</div>
+
+		<div id="header" class="container">
+			<h2 align="center">University Rankings - Exploratory Analysis</h2>
+		</div>
+
+		<div id="exploreSVG">
+		</div>
+
+		<div id="universitiesMenu">
+			<br><br>
+
+			<div id="filter">
+				<b>Region Filter:</b>
+				<br>
+				<input name='v' value="Northeast" type="checkbox" checked>Northeast
+				</input>
+				<br>
+				<input name="v" value="Midwest" type="checkbox" checked >Midwest
+				</input>
+				<br>
+				<input name="v" value="West" type="checkbox" checked >West
+				</input>
+				<br>
+				<input name="v" value="South" type="checkbox" checked >South
+				</input>
+			</div>
+
+			<form id="mark">
+				<b>Size of Mark:</b>
+				<div><input type="radio" name="rad" value="Rank">Rank</div>
+				<div><input type="radio" name="rad" value='Tuition'>Tuition</div>
+				<div><input type="radio" name="rad" value="UndergradEnrollment">Undergrad Enrollment</div>
+				<div><input type="radio" name="rad" value='TotalHeadCount'>Total HeadCount</div>
+			</form>
+
+			<div id="label"><b>x-Axis:</b></div>
+			<select name="xAX" id="xAXs">
+				<option value ="Rank">Rank</option>
+				<option value ="Tuition">Tuition</option>
+				<option value ="UndergradEnrollment">Undergrad Enrollment</option>
+				<option value ="TotalHeadCount">Total Head Count</option>
+				<option value ="MastersDegrees">Masters Degrees</option>
+				<option value ="PercentAdmitted">Percent Admitted</option>
+				<option value ="PercentAdmittedMen">Percent Admitted Men</option>
+				<option value ="PercentAdmittedWomen">Percent Admitted Women</option>
+				<option value ="TotalGraduationRate">Total Graduation Rate</option>
+				<option value ="MenGraduationRate">Men Graduation Rate</option>
+				<option value ="WomenGraduationRate">Women Graduation Rate</option>
+			</select>
+
+			<div id="label2"><b>y-Axis:</b></div>
+			<select name="yAX" id="yAXs">
+				<option value ="Tuition">Tuition</option>
+				<option value ="Rank">Rank</option>
+				<option value ="UndergradEnrollment">Undergrad Enrollment</option>
+				<option value ="TotalHeadCount">Total Head Count</option>
+				<option value ="MastersDegrees">Masters Degrees</option>
+				<option value ="PercentAdmitted">Percent Admitted</option>
+				<option value ="PercentAdmittedMen">Percent Admitted Men</option>
+				<option value ="PercentAdmittedWomen">Percent Admitted Women</option>
+				<option value ="TotalGraduationRate">Total Graduation Rate</option>
+				<option value ="MenGraduationRate">Men Graduation Rate</option>
+				<option value ="WomenGraduationRate">Women Graduation Rate</option>
+			</select>  
+			<br>
+		</div>
+	</div>
+
+	<div id="bias" class="tabcontent">
+		<h2 align="center">Explore Bias! Click on the Universities (small nodes) to check if ranking systems (big nodes) bias towards (green links) or against(red links) them</h2>
+		<div id="exploreSVG">
+		</div>
+	</div>
+
+
+	<div id="about" class="tabcontent">
+		<h2 align="center">About</h2>
+		<p align="center">Developed by Nelson Dsouza, Graduate student at the University of Washington under guidance from professor Jevin West (Winter 2017).</p>
+		<p align="center">Please reach out to me at my <a href="mailto:nelsonds@email.com">nelsonds@uw.edu</a> to provide feedback. Thank you for visiting!
+	</div>
+</body>
