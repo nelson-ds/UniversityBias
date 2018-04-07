@@ -14,13 +14,13 @@ For my analysis, I used multiple datasets and spent a significant amount of time
 I filtered the data for a single year - 2014 and only considered the top 150 Universities. Based on future results, I plan on scaling the analysis.
 
 ## Description of visualizations
-* C.1 Scatter Plot (can be found under 'Explore Universities' tab): This visualization allows the user to explore the various dimensions related to an university. The main features are -
+* Scatter Plot (can be found under 'Explore Universities' tab): This visualization allows the user to explore the various dimensions related to an university. The main features are -
 Users can interactively select the x and y axis for the plot. Currently there are 11 options
 Users can visualize 4 dimensions by setting its value to size
 Users can additionally filter the data points based on regions (which has also been represented in the data via color)
 Users can explore the university names by hovering mouse pointer over the circles in the scatter plot
 
-* C.2 Force directed Plot (can be found under 'Explore Bias' tab): This is an interactive force directed graph layout with charge and gravity. Complicated multidimensional network information can be visualized using this. The main features are -
+* Force directed Plot (can be found under 'Explore Bias' tab): This is an interactive force directed graph layout with charge and gravity. Complicated multidimensional network information can be visualized using this. The main features are -
   * Blue circles represent the different ranking systems and grey circles represent the universities
   * A red color tie indicates that the ranking system biases AGAINST that university whereas a green color tie indicates that the ranking system biases TOWARDS that university.
   * Ties can only be formed between ranking systems and universities
