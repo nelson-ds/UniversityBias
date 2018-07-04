@@ -1,6 +1,6 @@
 # UniversityBias
 
-## Motivation
+## Website
 www.university-bias.com
 
 ## Motivation
