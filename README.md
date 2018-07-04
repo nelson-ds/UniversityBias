@@ -1,6 +1,9 @@
 # UniversityBias
 
 ## Motivation
+www.university-bias.com
+
+## Motivation
 I was interested in analyzing bias in various University Ranking Systems. As part of an independent study with professor Jevin West at the University of Washington, I used various statistical analysis techniques to identify if and how University Ranking Systems are biased. I used Javascript/D3 to visualize the results.
 
 ## Data Used
